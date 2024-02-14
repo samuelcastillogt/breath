@@ -1,28 +1,73 @@
-import React, {useEffect, useState} from "react";
-import { View, Text, TouchableHighlight, StyleSheet } from "react-native";
-const ejerccio = [4,6,8]
+import React, { useState } from "react";
+import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight } from "react-native";
+import Breath from "../components/Breath";
+import { constants } from "../utils/constans";
+
 const Respiracion = ()=>{
-    const [index, setIndex] = useState(0)
-    const counter = ()=>{
-        for(let i = 0; i <= ejerccio.length; i++){
-            console.log("hola" + i)
-        }
-    //   ejerccio.forEach((e, i) => console.log("El numero es "+e))  
-    }
-    useEffect(counter,[])
+    const [exercise, setExercise] = useState([])
     return(
-        <>
-            <View style={styles.container}>
-                <Text>Respiracion</Text>
-            </View>
-        </>
+        <View>
+            {
+                exercise.length == 0 && <View style={styles.container}> 
+                <Text style={styles.title}>Escoge tu ejercicio</Text>
+                <ScrollView>
+                    <TouchableHighlight style={styles.option} onPress={()=> setExercise([4,6,8])}>
+                    <Text 
+                        style={styles.optionTitle}
+                    > Base
+                    </Text>  
+                    </TouchableHighlight>
+                    <TouchableHighlight style={styles.option} onPress={()=> setExercise([2,3,4,5,6])}>
+                    <Text 
+                        style={styles.optionTitle}
+                    > Relajacion Rapida
+                    </Text>  
+                    </TouchableHighlight>
+                </ScrollView>
+                </View>
+            }
+
+            {
+                exercise.length > 0 && 
+                <>
+                    <Breath ejerccio={exercise} close={setExercise}/>
+                    <Button title="Detener" 
+                            style={styles.button} 
+                            onPress={()=> setExercise([])}
+
+                    />
+                </>
+                
+            }
+            
+        </View>
     )
 }
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
+    container: {
         justifyContent: "center",
-        alignItems: "center"
-    }
+        alignItems: "center",
+        padding: 10,
+    },
+    title:{
+        fontSize: 30
+    },
+    button: {
+        position: "absolute",
+        bottom: 1,
+      },
+      option: {
+        padding: 10,
+        height: 50,
+        backgroundColor: constants.verde,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+        margin: 10
+      },
+      optionTitle: {
+        fontSize: 15,
+        color: "white"
+      }
 })
 export default Respiracion
