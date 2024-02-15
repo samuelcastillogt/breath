@@ -32,7 +32,8 @@ const Home = ({navigation})=>{
                 <Header />
             </View>
             <Card goTo={goTo} title="Diario de Sintomas" name="Diario"/>
-            <Card goTo={goTo} title="Ejercicios de Relajacion" name="Respiracion"/>           
+            <Card goTo={goTo} title="Ejercicios de Relajacion" name="Respiracion"/>
+            <Card goTo={goTo} title="Aprende a aceptar" name="Aceptar"/>           
         </ScrollView>
 
         </LinearGradient>

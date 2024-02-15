@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Respiracion from './pages/Respiracion';
 import Diario from "./pages/Diario"
 import { constants } from './utils/constans';
+import Aceptar from './pages/Aceptar';
 
 const Stack = createNativeStackNavigator()
 export default function App() {
@@ -18,9 +19,10 @@ export default function App() {
     <Provider store={store}>
     <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
+      <Stack.Screen name="Inicio" component={Home} options={{ headerShown: false }}/>
       <Stack.Screen name="Respiracion" component={Respiracion} />
       <Stack.Screen name="Diario" component={Diario} options={{headerTintColor: constants.verde, headerTransparent: "red"}}/>
+      <Stack.Screen name="Aceptar" component={Aceptar} options={{headerTintColor: constants.verde, headerTransparent: "red"}}/>
     </Stack.Navigator>
   </NavigationContainer>
   </Provider>
