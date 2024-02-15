@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
-
+import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite/next';
 import Home from './pages/Home';
 import Respiracion from './pages/Respiracion';
 import Diario from "./pages/Diario"
@@ -14,6 +14,7 @@ import { constants } from './utils/constans';
 const Stack = createNativeStackNavigator()
 export default function App() {
   return (
+    <SQLiteProvider databaseName="test.db">
     <Provider store={store}>
     <NavigationContainer>
     <Stack.Navigator>
@@ -23,6 +24,7 @@ export default function App() {
     </Stack.Navigator>
   </NavigationContainer>
   </Provider>
+  </SQLiteProvider>
   );
 }
 

@@ -1,17 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const SintomaForm = (props)=>{
-    console.log(props)
-    const {setOpen} = props
+    const {setOpen, saveSintoma} = props
+    const [title, setTitle] = useState("")
+    const [desc, setDesc] = useState("")
+    const dave = ()=>{
+        saveSintoma(title, desc)
+    }
+
     return(
             <View style={styles.container}>
                 <MaterialCommunityIcons name="close-circle" size={40} color="red" style={styles.close} onPress={()=> setOpen(false)}/>
                 <Text style={styles.title}>Registra tu sintoma</Text>
-                <TextInput placeholder="Como se llama tu sintoma" style={styles.input} key={1}/>
-                <TextInput placeholder="Describe lo que sentiste" style={[styles.input, {heigth: 90}]} key={2}/>
-                <Button title="Registrar" style={styles.buuton}/>
+                <TextInput placeholder="Como se llama tu sintoma" 
+                           style={styles.input} 
+                           key={1}
+                           onChange={(e)=> setTitle(e.nativeEvent.text)}
+                />
+                <TextInput placeholder="Describe lo que sentiste" 
+                           style={styles.input} 
+                           key={2}
+                           onChange={(e)=> setDesc(e.nativeEvent.text)}
+                />
+                <Button title="Registrar" style={styles.buuton} onPress={dave} disabled={title.length == 0 || desc.length ==0 }/>
             </View>
     )
 }
