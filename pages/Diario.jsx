@@ -36,7 +36,7 @@ const Diario = ()=>{
         <ScrollView>
          <Text>Diario</Text> 
          {
-            tasks.length > 0 && tasks.map(item => <SintomaCard item={item}/>)
+            tasks.length > 0 && tasks.map(item => <SintomaCard item={item} key={item.id}/>)
          }  
         </ScrollView>
         {open == true && <SintomaForm setOpen={setOpen} saveSintoma={saveSintoma}/>}
