@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight, Dimensions } from "react-native";
 import Breath from "../components/Breath";
 import { constants } from "../utils/constans";
 
 const Respiracion = ()=>{
     const [exercise, setExercise] = useState([])
+
     return(
-        <View>
+        <>
             {
                 exercise.length == 0 && <View style={styles.container}> 
                 <Text style={styles.title}>Escoge tu ejercicio</Text>
@@ -29,18 +30,17 @@ const Respiracion = ()=>{
 
             {
                 exercise.length > 0 && 
-                <>
+                <View style={[styles.breath]}>
                     <Breath ejerccio={exercise} close={setExercise}/>
                     <Button title="Detener" 
                             style={styles.button} 
                             onPress={()=> setExercise([])}
-
                     />
-                </>
+                </View>
                 
             }
             
-        </View>
+        </>
     )
 }
 const styles = StyleSheet.create({
@@ -49,12 +49,21 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: 10,
     },
+    breath:{
+        flex: 1,
+        display: "flex",
+        width: Dimensions.get("screen").width,
+        position: "relative"
+      },
     title:{
         fontSize: 30
     },
     button: {
         position: "absolute",
-        bottom: 1,
+        bottom: 10,
+        width: "10%",
+        color: "red",
+        borderRadius: 20
       },
       option: {
         padding: 10,
@@ -68,6 +77,7 @@ const styles = StyleSheet.create({
       optionTitle: {
         fontSize: 15,
         color: "white"
-      }
+      },
+      
 })
 export default Respiracion

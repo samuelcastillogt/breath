@@ -62,7 +62,8 @@ const Breath = (props)=>{
           alignItems: "center",
           justifyContent: "center",
           opacity: textOpacity,
-          flex: 1
+          flex: 1,
+          
         }}
       >
         <Text
@@ -127,7 +128,7 @@ const Breath = (props)=>{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
         left: width / 4,
