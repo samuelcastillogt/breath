@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { constants } from '../utils/constans';
 
 const Target = (props) => {
     const {data, exit} = props
@@ -35,14 +37,19 @@ const Target = (props) => {
 
         <View style={styles.buttonContainer}>
         <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
-            exit([])
-          }}>
-            <MaterialCommunityIcons name="exit-run" size={24} color="black" />
-          </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
             this.swiper.goBackFromLeft();
           }}>
-            <Text>Anterior</Text>
+            <FontAwesome5 name="step-backward" size={24} color="white" />
+          </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
+            exit([])
+          }}>
+            <MaterialCommunityIcons name="exit-run" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
+            this.swiper.swipeLeft() ;
+          }}>
+            <FontAwesome5 name="step-forward" size={24} color="white" />
           </TouchableOpacity>
         </View>
 
@@ -101,6 +108,7 @@ const styles = StyleSheet.create({
   },
   button:{
     shadowColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: constants.verde,
     shadowOffset: {
       width: 0,
       height: 1
@@ -113,8 +121,7 @@ const styles = StyleSheet.create({
   orange:{
     width:55,
     height:55,
-    borderWidth:6,
-    borderColor:'rgb(246,190,66)',
+
     borderRadius:55,
     marginTop:-15
   },
