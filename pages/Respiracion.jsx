@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight, Dimensions } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
+
 import Breath from "../components/Breath";
 import { constants } from "../utils/constans";
 
@@ -32,10 +34,12 @@ const Respiracion = ()=>{
                 exercise.length > 0 && 
                 <View style={[styles.breath]}>
                     <Breath ejerccio={exercise} close={setExercise}/>
-                    <Button title="Detener" 
-                            style={styles.button} 
-                            onPress={()=> setExercise([])}
-                    />
+                    <View style={styles.buttonContainer}>
+                     <TouchableHighlight onPress={()=> setExercise([])} style={styles.button}>
+                    <FontAwesome name="stop" size={40} color="white" />
+                    </TouchableHighlight>                       
+                    </View>
+
                 </View>
                 
             }
@@ -59,12 +63,21 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 30
     },
-    button: {
+    buttonContainer:{
+        width: "100%", 
+        justifyContent: "center", 
+        alignItems: "center",         
         position: "absolute",
-        bottom: 10,
-        width: "10%",
+        bottom: 100,
+    },
+    button: {
+        padding: 20,
         color: "red",
-        borderRadius: 20
+        borderRadius: 50,
+        backgroundColor: "red",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
       },
       option: {
         padding: 10,

@@ -127,7 +127,8 @@ const Breath = (props)=>{
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        
+        height: 500,
         // backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
