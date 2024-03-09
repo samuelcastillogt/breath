@@ -10,7 +10,7 @@ const ConceptCard = ()=>{
             {
                 cards.length >0 && <Target data={cards} exit={setCards}/> ||             <>
                 <Text>Aprende a acpetar</Text>
-               <Button title="Agregar" onPress={()=> setCards([2, 3, 5, 6, 8])}/>           
+               <Button title="Agregar" onPress={()=> setCards(["¿Como puedes aceptar algo que se siente tan mal? ¿Acaso no haces lo suficiente?", "Creeme, yo tambien me he preguntado lo mismo", "Y posiblemente creas que esto es imposible. Pero...", "A riesgo que me odies, si se puede y creeme es muy satisfactorio", 8])}/>           
                </>
             }
         </View>
