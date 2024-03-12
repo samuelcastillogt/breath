@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight, Dimensions } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight, Dimensions, StatusBar } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
 import Breath from "../components/Breath";
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         padding: 10,
-        flex: 1
+        flex: 1,
+        paddingTop: StatusBar.currentHeight
     },
     breath:{
         flex: 1,

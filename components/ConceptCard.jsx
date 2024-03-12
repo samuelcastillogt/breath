@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, StyleSheet, Button} from "react-native"
+import {View, Text, StyleSheet, Button, StatusBar} from "react-native"
 import Target from "./Target";
 const ConceptCard = ()=>{
     const [cards, setCards]= useState([])
@@ -18,7 +18,8 @@ const ConceptCard = ()=>{
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        padding: 10
     }
 })
 export default ConceptCard

@@ -13,15 +13,12 @@ import { constants } from '../utils/constans';
 
 const Target = (props) => {
     const {data, exit} = props
-    const [final, setFinal] = useState(false)
-    const [index, setIndex] = useState(0)
   return (
     <View style={{ flex: 1 }}>
 
       <CardStack
         style={styles.content}
         renderNoMoreCards={() => {
-                                setFinal(true)
                                 return <Text style={{ fontWeight: '700', fontSize: 18, color: 'gray' }}>Haz terminado la leccion</Text>}}
         ref={swiper => {
           this.swiper = swiper
@@ -30,7 +27,7 @@ const Target = (props) => {
         onSwipedLeft={() => console.log('onSwipedLeft')}
       >
         {
-            data.map((item, index) => <Card style={styles.card} key={index}>
+            data.map((item, index) => <Card style={styles.card} key={item}>
 
                 <Text style={styles.label}>{item}</Text>
 </Card>

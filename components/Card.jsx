@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
 const Card = (props)=>{
-    const {goTo, title, name} = props
+    const {goTo, title, name, icono} = props
     return(
         <TouchableHighlight style={styles.container} onPress={()=> goTo(name)}>
             <>
-            <AntDesign name="upcircle" size={50} color="black" />
+            <AntDesign name={icono} size={50} color="black" />
             <Text style={styles.title}>{title}</Text>            
             </>
 
