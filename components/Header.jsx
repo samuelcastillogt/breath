@@ -1,23 +1,10 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, TouchableHighlight } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-// const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
-const data = [
-    {
-        title: "Primer",
-        image: 'https://legacy.reactjs.org/logo-og.png'
-    },
-    {
-        title: "segundo",
-        image: "https://c8.alamy.com/compes/d28rt5/abre-tu-mente-el-concepto-de-dibujo-de-tiza-en-la-pizarra-d28rt5.jpg"
-    }, 
-    {
-        title: "tercero",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUYbl1fX8hznI_NfZiKZTmZLED6ne4QgntI91rHi9OrYALcgqqSoD2ygjCFX45Pd1vj6o&usqp=CAU"
-    }
-]
-const Header = ()=>{
+const Header = (props)=>{
+    const {data, goTo} = props
     const [index, setIndex] = useState(0)
+
     const next = ()=>{
         if(index == data.length -1){
             setIndex(0)
@@ -36,12 +23,9 @@ const Header = ()=>{
     return(
         <View style={styles.main}>
             <AntDesign name="stepbackward" size={24} color="white" onPress={back}/>
-            
-            <View style={[styles.container]}>
-            <ImageBackground source={image = {uri: data[index].image}} resizeMode="cover" style={styles.image}>
+            <TouchableHighlight onPress={()=> goTo.navigate("Post", {uri: data[index].url})} style={[styles.container]}>
                 <Text style={styles.title}>{data[index].title}</Text>
-             </ImageBackground>   
-            </View>
+            </TouchableHighlight>
             <AntDesign name="stepforward" size={24} color="white" onPress={next}/>
         </View>
             
@@ -61,7 +45,10 @@ const styles = StyleSheet.create({
           },
         shadowOpacity: 0.1,
         shadowRadius: 1,
-        overflow: "hidden"
+        overflow: "hidden",
+        backgroundColor: "#818FB4",
+        justifyContent: "center",
+        alignItems: "flex-end"
     }, 
     main:{
         justifyContent: "space-around",
@@ -70,8 +57,6 @@ const styles = StyleSheet.create({
     },
     title:{
         color: "white",
-        backgroundColor: "rgba(0,0,0,0.7)",
-        padding: 10
     },
     image: {
         flex: 1,

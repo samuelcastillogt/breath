@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         flex: 1,
         display: "flex",
         width: Dimensions.get("screen").width,
-        position: "relative"
+        position: "relative",
+        backgroundColor: "rgba(0,0,0, 0.8)"
       },
     title:{
         fontSize: 30

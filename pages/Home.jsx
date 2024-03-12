@@ -1,4 +1,4 @@
-import  React, {useEffect} from "react"
+import  React, {useEffect, useState} from "react"
 import { StatusBar, TouchableHighlight } from "react-native";
 import {View, Text, StyleSheet, ScrollView, Button, Dimensions} from "react-native"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -10,9 +10,15 @@ import { constants } from "../utils/constans"
 import Header from "../components/Header"
 import { LinearGradient } from 'expo-linear-gradient';
 import Card from "../components/Card";
+import { getAllData } from "../services/blog";
 const Home = ({navigation})=>{
+    const [data, setData] = useState([])
     const goTo = (to)=> navigation.navigate(to)
     const db = useSQLiteContext();
+    async function getData(){
+        const response = await getAllData()
+        setData(response)
+    } 
     async function setup() {
         try {
             await db.execAsync(`
@@ -25,7 +31,8 @@ const Home = ({navigation})=>{
       }
 
       useEffect(() => {
-            setup();            
+            setup();
+            getData()            
     }, []);
     return(
         <LinearGradient
@@ -34,7 +41,10 @@ const Home = ({navigation})=>{
       >
         <ScrollView>
             <View style={styles.slider}>
-                <Header />
+                {
+                    data.length > 0 && <Header data={data} goTo={navigation}/>
+                }
+                
             </View>
             <Card goTo={goTo} title="Diario de Sintomas" name="Diario" icono="book"/>
             <View>
