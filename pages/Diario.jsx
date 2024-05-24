@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView , Image} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useSQLiteContext } from 'expo-sqlite/next';
@@ -29,32 +29,53 @@ const Diario = ()=>{
    }, []);
     return(
         <View style={styles.container}>
-                    <LinearGradient
-        colors={[constants.verde, "rgba(9, 92, 55, 0.7)", 'rgb(8, 59, 36)']}
+                    <View
+        
         style={styles.container}
       >
         <ScrollView>
-         <Text>Diario</Text> 
+          <View style={styles.headerContainer}>
+            <Image  source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx2RLCBrroNlcvN0Rk-1Upe2JG9X-MVldbLw&usqp=CAU"}} style={styles.img}/>
+         <Text style={styles.title}>Observa lo que sientes y piensas</Text>           
+          </View>
+
          {
             tasks.length > 0 && tasks.map(item => <SintomaCard item={item} key={item.id}/>)
          }  
         </ScrollView>
-        {open == true && <SintomaForm setOpen={setOpen} saveSintoma={saveSintoma}/>}
         
-      </LinearGradient>
-      <MaterialIcons name="add-box" size={60} color="pink" style={styles.addButton} onPress={()=>setOpen(true)}/>
+        
+      </View>
+      {open == true ? <SintomaForm setOpen={setOpen} saveSintoma={saveSintoma}/> : <MaterialIcons name="add-box" size={60} color="pink" style={styles.addButton} onPress={()=>setOpen(true)}/>}
         </View>
     )
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgb(255,255,255)"
+    },
+    headerContainer:{
+      justifyContent: "center",
+      alignItems: "center"
     },
     addButton: {
         position: "absolute",
         bottom: 10,
         right: 20,
         elevation: 10
+    },
+    img:{
+      width: 200,
+      height: 200
+    },
+    title: {
+      fontSize: 25,
+      color: "rgb(49, 198, 133)",
+      fontWeight: "bold",
+      textDirection: "center"
     }
 })
 export default Diario

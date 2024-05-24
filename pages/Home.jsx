@@ -1,5 +1,5 @@
 import  React, {useEffect, useState} from "react"
-import { StatusBar, TouchableHighlight } from "react-native";
+import { Image, StatusBar, TouchableHighlight } from "react-native";
 import {View, Text, StyleSheet, ScrollView, Button, Dimensions} from "react-native"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
@@ -35,20 +35,23 @@ const Home = ({navigation})=>{
             getData()            
     }, []);
     return(
-        <LinearGradient
-        colors={[constants.verde, "rgba(9, 92, 55, 0.7)", 'rgb(8, 59, 36)']}
+        <View
+        
         style={styles.container}
       >
         <ScrollView>
             <View style={styles.slider}>
+            {/* 
                 {
                     data.length > 0 && <Header data={data} goTo={navigation}/>
                 }
-                
-            </View>
+                */}
+                <Image source={{uri: "https://png.pngtree.com/png-clipart/20230430/original/pngtree-yoga-day-cartoon-meditation-png-image_9127494.png"}} style={styles.img}/>
+            </View> 
+            
             <Card goTo={goTo} title="Diario de Sintomas" name="Diario" icono="book"/>
             <View>
-                <Text style={styles.title}>Sintomas mas comunes</Text>
+                <Text style={styles.title}>Explora tus sintomas</Text>
             </View>
             <View style={styles.optionContainer}>
                 <TouchableHighlight onPress={()=> navigation.navigate("Sintomas", {categoria: "Mental"})} style={[styles.option, styles.principal]}><><MaterialCommunityIcons name="brain" size={50} color="black" /><Text>Mental</Text></></TouchableHighlight>
@@ -60,14 +63,15 @@ const Home = ({navigation})=>{
 
         </ScrollView>
 
-        </LinearGradient>
+        </View>
     )
 }
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        paddingTop: StatusBar.currentHeight,
-        justifyContent: "center"
+        paddingTop: StatusBar.currentHeight ? StatusBar.currentHeight: 20,
+        justifyContent: "center",
+        backgroundColor: "rgb(255,255,255)"
     },
     slider:{
         justifyContent: "center",
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize:25,
         fontWeight: "bold",
-        color:"white",
+        color:"rgb(150,150,255)",
         margin: 10
     },
     optionContainer: {
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     option:{
-        backgroundColor: "rgba(150,150,255,0.6)",
+        backgroundColor: "rgb(150,150,255)",
         padding: 10,
         borderRadius: 10,
         margin: 5,
@@ -99,6 +103,10 @@ const styles = StyleSheet.create({
     secundary:{
         width: 150,
         height: 90
+    },
+    img: {
+        width: 200,
+        height: 200
     }
 })
 export default Home

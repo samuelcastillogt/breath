@@ -32,11 +32,13 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: "white",
         position: "absolute",
-        top: 10,
+        top: "10%",
         width: "90%",
         margin: 10,
         padding: 20,
         borderRadius: 10,
+        height: 500,
+        zIndex: 99999999
     },
     title:{
         fontSize: 15,

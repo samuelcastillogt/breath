@@ -5,45 +5,51 @@ import { constants } from "../utils/constans";
 const { width, height } = Dimensions.get("window");
 const circleWidth = width / 2;
 const Breath = (props)=>{
-    const {ejerccio, close} = props
-    const [index, setIndex] = useState(0)
+    const {ejerccio, close, play} = props
+
     const move = useRef(new Animated.Value(0)).current;
     const textOpacity = useRef(new Animated.Value(1)).current;
-    Animated.loop(
-        Animated.sequence(
-            
-               ejerccio.map(i => (  
-                      Animated.sequence([
-                      Animated.parallel([
-                        Animated.timing(textOpacity, {
-                          toValue: 1,
-                          duration: 300,
-                          useNativeDriver: true,
-                        }),
-                        Animated.timing(move, {
-                          toValue: 1,
-                          duration: i * 1000,
-                          useNativeDriver: true,
-                        }),
-                      ]),
-                      Animated.parallel([
-                        Animated.timing(textOpacity, {
-                          delay: 100,
-                          toValue: 0,
-                          duration: 300,
-                          useNativeDriver: true,
-                        }),
-                        Animated.timing(move, {
-                          delay: 1000,
-                          toValue: 0,
-                          duration: i * 1000,
-                          useNativeDriver: true,
-                        }),
-                      ]),
-                    ])))
-            
+
+      useEffect(()=>{
+        if(play == true){
+          Animated.loop(
+            Animated.sequence(
                 
-      )).start()
+                   ejerccio.map(i => (  
+                          Animated.sequence([
+                          Animated.parallel([
+                            Animated.timing(textOpacity, {
+                              toValue: 1,
+                              duration: 300,
+                              useNativeDriver: true,
+                            }),
+                            Animated.timing(move, {
+                              toValue: 1,
+                              duration: i * 1000,
+                              useNativeDriver: true,
+                            }),
+                          ]),
+                          Animated.parallel([
+                            Animated.timing(textOpacity, {
+                              delay: 100,
+                              toValue: 0,
+                              duration: 300,
+                              useNativeDriver: true,
+                            }),
+                            Animated.timing(move, {
+                              delay: 1000,
+                              toValue: 0,
+                              duration: i * 1000,
+                              useNativeDriver: true,
+                            }),
+                          ]),
+                        ])))
+                
+                    
+          )).start()
+
+        }
+      }, [play])
       const translate = move.interpolate({
         inputRange: [0, 1],
         outputRange: [0, circleWidth / 6],
@@ -52,7 +58,7 @@ const Breath = (props)=>{
         inputRange: [0, 1],
         outputRange: [1, 0],
       });
-    return(
+      return(
         <View style={styles.container}>
         <Animated.View
         style={{

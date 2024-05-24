@@ -7,7 +7,7 @@ import { constants } from "../utils/constans";
 
 const Respiracion = ()=>{
     const [exercise, setExercise] = useState([])
-
+    const [play, setPlay] = useState(false)
     return(
         <>
             {
@@ -17,7 +17,7 @@ const Respiracion = ()=>{
                     <TouchableHighlight style={styles.option} onPress={()=> setExercise([4,6,8])}>
                     <Text 
                         style={styles.optionTitle}
-                    > Base
+                    > Basica
                     </Text>  
                     </TouchableHighlight>
                     <TouchableHighlight style={styles.option} onPress={()=> setExercise([2,3,4,5,6])}>
@@ -33,11 +33,20 @@ const Respiracion = ()=>{
             {
                 exercise.length > 0 && 
                 <View style={[styles.breath]}>
-                    <Breath ejerccio={exercise} close={setExercise}/>
+                    <Breath ejerccio={exercise} close={setExercise} play={play}/>
                     <View style={styles.buttonContainer}>
-                     <TouchableHighlight onPress={()=> setExercise([])} style={styles.button}>
+                        {
+                            play == true      ?  <TouchableHighlight onPress={()=> {
+                                setExercise([])
+                                setPlay(false)
+                                }} style={styles.button}>
                     <FontAwesome name="stop" size={40} color="white" />
-                    </TouchableHighlight>                       
+                    </TouchableHighlight>  : 
+                    <TouchableHighlight onPress={()=> setPlay(true)} style={styles.button}>
+                    <FontAwesome name="play" size={40} color="white" />
+                    </TouchableHighlight>
+                        }
+                     
                     </View>
 
                 </View>
@@ -63,7 +72,9 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(0,0,0, 0.8)"
       },
     title:{
-        fontSize: 30
+        fontSize: 30,
+        color: constants.verde,
+        fontWeight: "bold"
     },
     buttonContainer:{
         width: "100%", 
@@ -79,7 +90,7 @@ const styles = StyleSheet.create({
         backgroundColor: "red",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
       },
       option: {
         padding: 10,
@@ -88,11 +99,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,
-        margin: 10
+        margin: 10,
+        width: 300
       },
       optionTitle: {
-        fontSize: 15,
-        color: "white"
+        fontSize: 25,
+        color: "white",
+        fontWeight: "bold"
       },
       
 })

@@ -7,7 +7,7 @@ const Card = (props)=>{
     return(
         <TouchableHighlight style={styles.container} onPress={()=> goTo(name)}>
             <>
-            <AntDesign name={icono} size={50} color="black" />
+            <AntDesign name={icono} size={50} color="white" />
             <Text style={styles.title}>{title}</Text>            
             </>
 
@@ -16,7 +16,7 @@ const Card = (props)=>{
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "rgba(168, 103, 103, 0.4)",
+        backgroundColor: "rgb(168, 103, 103)",
         margin: 10,
         height: 150,
         borderRadius: 10,

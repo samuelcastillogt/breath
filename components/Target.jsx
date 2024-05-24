@@ -13,6 +13,8 @@ import { constants } from '../utils/constans';
 
 const Target = (props) => {
     const {data, exit} = props
+    const [last, setLast] = useState(false)
+    const [count, setCount]= useState(1)
   return (
     <View style={{ flex: 1 }}>
 
@@ -23,13 +25,12 @@ const Target = (props) => {
         ref={swiper => {
           this.swiper = swiper
         }}
-        onSwiped={() => console.log('onSwiped')}
-        onSwipedLeft={() => console.log('onSwipedLeft')}
       >
         {
             data.map((item, index) => <Card style={styles.card} key={item}>
 
                 <Text style={styles.label}>{item}</Text>
+                <Text style={styles.counter}>{index + 1}/{data.length}</Text>
 </Card>
               )
         }
@@ -38,21 +39,29 @@ const Target = (props) => {
       <View style={styles.footer}>
 
         <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[ styles.button, styles.orange]} onPress={() => {
+          {
+            count != 1 &&         <TouchableOpacity style={[ styles.button, styles.orange]} onPress={() => {
+            setCount(count-1)
             this.swiper.goBackFromLeft();
           }}>
             <FontAwesome5 name="step-backward" size={24} color="white" />
           </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
+          }
+
+        <TouchableOpacity style={[styles.button, styles.orange, {backgroundColor:"orange"}]} onPress={() => {
             exit([])
           }}>
             <MaterialCommunityIcons name="exit-run" size={24} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
+          {
+            count != data.length + 1 &&  <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
             this.swiper.swipeLeft() ;
+            setCount(count+1)
           }}>
             <FontAwesome5 name="step-forward" size={24} color="white" />
           </TouchableOpacity>
+          }
+
         </View>
 
       </View>
@@ -153,6 +162,14 @@ const styles = StyleSheet.create({
     borderRadius:75,
     borderWidth:6,
     borderColor:'#fd267d',
+  },
+  counter:{
+    color: constants.verde, 
+    position: "absolute", 
+    top: 10, 
+    right: 10, 
+    fontSize: 20, 
+    fontWeight: "bold"
   }
 });
 

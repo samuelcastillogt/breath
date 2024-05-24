@@ -24,21 +24,26 @@ const SintomaCard = (props)=>{
 }
 const styles = StyleSheet.create({
     container:{
-        width: "80%",
-        backgroundColor: "white",
+        width: 300,
+        backgroundColor: "green",
         margin: 10,
         padding: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        justifyContent: "center",
+        alignContent: "center"
     },
     close:{
         position: "absolute",
         right: 5,
         top: -20,
-        zIndex: 999
+        zIndex: 999,
+        backgroundColor: "white",
+        padding:0
     },
     title:{
         fontSize: 25,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "white"
     }
 })
 export default SintomaCard
