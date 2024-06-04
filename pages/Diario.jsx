@@ -74,8 +74,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 25,
       color: "rgb(49, 198, 133)",
-      fontWeight: "bold",
-      textDirection: "center"
+      fontWeight: "bold"
     }
 })
 export default Diario

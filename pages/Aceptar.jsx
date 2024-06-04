@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
 
 import ConceptCard from "../components/ConceptCard";
 const Aceptar = ()=>{
@@ -12,7 +12,13 @@ const Aceptar = ()=>{
 const styles= StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: StatusBar.currentHeight
+        paddingTop: StatusBar.currentHeight,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    img:{
+        width: 200,
+        height: 200
     }
 })
 export default Aceptar

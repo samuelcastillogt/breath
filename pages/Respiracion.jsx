@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, ScrollView, Button, TouchableHighlight, Dimensions, StatusBar } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Image, TouchableHighlight, Dimensions, StatusBar } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
 import Breath from "../components/Breath";
@@ -12,6 +12,7 @@ const Respiracion = ()=>{
         <>
             {
                 exercise.length == 0 && <View style={styles.container}> 
+                <Image source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5YRDo5LoxRqfHMLcE91U0FkYE8Hy-ZCWdU-h3_o9hm1zzG1FQ"}} style={styles.img}/>
                 <Text style={styles.title}>Escoge tu ejercicio</Text>
                 <ScrollView>
                     <TouchableHighlight style={styles.option} onPress={()=> setExercise([4,6,8])}>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
         display: "flex",
         width: Dimensions.get("screen").width,
         position: "relative",
-        backgroundColor: "rgba(0,0,0, 0.8)"
+        backgroundColor: constants.verde
       },
     title:{
         fontSize: 30,
@@ -107,6 +108,10 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold"
       },
+      img:{
+        width: 200,
+        height: 200
+      }
       
 })
 export default Respiracion
