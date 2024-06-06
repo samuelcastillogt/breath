@@ -3,7 +3,5 @@ import { constants } from "../utils/constans"
 
 export const getAllData = async()=>{
     const response = await axios.get(constants.urlApi + "/api/blogger")
-    
-    console.log(response)
-    return response
+    return response.data
 }

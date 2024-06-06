@@ -54,7 +54,7 @@ const Home = ({navigation})=>{
                 <Text style={styles.title}>Explora tus sintomas</Text>
             </View>
             <View style={styles.optionContainer}>
-                <TouchableHighlight onPress={()=> navigation.navigate("Sintomas", {categoria: "Mental"})} style={[styles.option, styles.principal]}><><MaterialCommunityIcons name="brain" size={50} color="black" /><Text>Mental</Text></></TouchableHighlight>
+                <TouchableHighlight onPress={()=> navigation.navigate("Sintomas", {categoria: "Mental", data:data} )} style={[styles.option, styles.principal]}><><MaterialCommunityIcons name="brain" size={50} color="black" /><Text>Mental</Text></></TouchableHighlight>
                 <View>
                 <TouchableHighlight style={[styles.option, styles.secundary]} onPress={()=> navigation.navigate("Sintomas", {categoria: "Fisicos"})}><><FontAwesome6 name="person" size={24} color="black" /><Text>Fisicos</Text></></TouchableHighlight>
                 <TouchableHighlight style={[styles.option, styles.secundary]} onPress={()=> navigation.navigate("Sintomas", {categoria: "Sensaciones"})}><><AntDesign name="exclamationcircle" size={24} color="black" /><Text>Sensaciones</Text></></TouchableHighlight>

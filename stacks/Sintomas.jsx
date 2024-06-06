@@ -7,16 +7,12 @@ import Aceptar from '../pages/Aceptar';
 import { constants } from '../utils/constans';
 import Sintomas from '../pages/Sintomas';
 import Web from '../pages/Web';
-import HtmlRender from '../pages/HtmlRender';
-const Init = ()=>{
+const SintomasPage = ()=>{
     return(
         <Stack.Navigator>
-        <Stack.Screen name="Inicio" component={Home} options={{ headerShown: false }}/>
         <Stack.Screen name="Sintomas" component={Sintomas} options={{headerTintColor: "green"}}/>
-        <Stack.Screen name="Post" component={Web} options={{headerTintColor: constants.verde}}/>
-        <Stack.Screen name="Web" component={HtmlRender} options={{headerTintColor: constants.verde}}/>
-        <Stack.Screen name="Diario" component={Diario} options={{headerTintColor: constants.verde}}/>
+        <Stack.Screen name="Web" component={Web} options={{headerTintColor: constants.verde}}/>
       </Stack.Navigator>
     )
 }
-export default Init
+export default SintomasPage
