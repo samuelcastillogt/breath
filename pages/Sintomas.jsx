@@ -6,15 +6,18 @@ const Sintomas = ({navigation, route})=>{
     const [post, setPost] = useState(null)
     const {categoria, data} = route.params
     return(
-        <ScrollView>
-          {
+        <ScrollView >
+            <View style={{alignItems: "center"}}>
+           {
             post == null && data.map(item => <TouchableHighlight style={styles.option} key={item.title} onPress={()=> navigation.navigate("Web", {content: item.content})}>
             <Text 
                 style={styles.optionTitle}
             > {item.title}
             </Text>  
             </TouchableHighlight>)
-          }
+          }               
+            </View>
+
 </ScrollView>
     )
 }

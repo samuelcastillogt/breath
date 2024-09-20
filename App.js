@@ -15,10 +15,16 @@ import Aceptar from './pages/Aceptar';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Init from './stacks/Init';
 import { AntDesign } from '@expo/vector-icons';
+import { useEffect } from 'react';
+import { getAllCards } from './services/dataApp.service';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
 // const Tab = createBottomTabNavigator()
 export default function App() {
+  useEffect(() => {
+    getAllCards()
+  }
+  , [])
   return (
     <SQLiteProvider databaseName="test.db">
     <Provider store={store}>

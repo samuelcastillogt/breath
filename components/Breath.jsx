@@ -76,7 +76,7 @@ const Breath = (props)=>{
           style={{
             fontSize: 20,
             fontWeight: "600",
-            color: "white"
+            color: "red"
           }}
         >
           Inhale
@@ -96,7 +96,7 @@ const Breath = (props)=>{
           style={{
             fontSize: 20,
             fontWeight: "600",
-            color: "white"
+            color: "red"
           }}
         >
           Exhale

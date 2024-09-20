@@ -14,7 +14,7 @@ const SintomaCard = (props)=>{
             <View>
                 <AntDesign name="closecircle" size={30} color="red" style={styles.close} onPress={()=> setOpen(false)}/>
                 <Text style={styles.title}>{title}</Text>
-                <Text>{descripcion}</Text>
+                <Text style={styles.text}>{descripcion}</Text>
             </View>
             }
             
@@ -38,10 +38,16 @@ const styles = StyleSheet.create({
         top: -20,
         zIndex: 999,
         backgroundColor: "white",
+        borderRadius: 30,
         padding:0
     },
     title:{
         fontSize: 25,
+        fontWeight: "bold",
+        color: "white"
+    },
+    text:{
+        fontSize: 20,
         fontWeight: "bold",
         color: "white"
     }

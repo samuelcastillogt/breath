@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,18 +10,28 @@ import CardStack, { Card } from 'react-native-card-stack-swiper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { constants } from '../utils/constans';
+import FinishedLesson from './FinishedLesson';
 
 const Target = (props) => {
     const {data, exit} = props
     const [last, setLast] = useState(false)
     const [count, setCount]= useState(1)
+    useEffect(()=>{
+      if(count == data.length +1){
+        setLast(true)
+        setTimeout(() => {
+          setLast(false)
+        }, 5000);
+      }
+    }, [count])
   return (
     <View style={{ flex: 1 }}>
 
       <CardStack
         style={styles.content}
         renderNoMoreCards={() => {
-                                return <Text style={{ fontWeight: '700', fontSize: 18, color: 'gray' }}>Haz terminado la leccion</Text>}}
+                                return <FinishedLesson /> 
+                              }}
         ref={swiper => {
           this.swiper = swiper
         }}
@@ -47,12 +57,14 @@ const Target = (props) => {
             <FontAwesome5 name="step-backward" size={24} color="white" />
           </TouchableOpacity>
           }
-
-        <TouchableOpacity style={[styles.button, styles.orange, {backgroundColor:"orange"}]} onPress={() => {
+          {
+            last == false &&         <TouchableOpacity disabled={last} style={[styles.button, styles.orange, {backgroundColor:"orange"}]} onPress={() => {
             exit([])
           }}>
             <MaterialCommunityIcons name="exit-run" size={24} color="white" />
           </TouchableOpacity>
+          }
+
           {
             count != data.length + 1 &&  <TouchableOpacity style={[styles.button, styles.orange]} onPress={() => {
             this.swiper.swipeLeft() ;
