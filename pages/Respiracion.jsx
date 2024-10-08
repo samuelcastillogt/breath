@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, ScrollView, Image, TouchableHighlight, Dimensions, StatusBar } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Breath from "../components/Breath";
 import { constants } from "../utils/constans";
 
@@ -48,7 +48,7 @@ const Respiracion = ({navigation, route})=>{
                                 setExercise([])
                                 setPlay(false)
                                 }} style={styles.button}>
-                    <FontAwesome name="stop" size={40} color="white" />
+                    <MaterialCommunityIcons name="exit-run" size={40} color="white" />
                     </TouchableHighlight>  : 
                     <TouchableHighlight onPress={()=> setPlay(true)} style={styles.button}>
                     <FontAwesome name="play" size={40} color="white" />
@@ -94,10 +94,12 @@ const styles = StyleSheet.create({
         padding: 20,
         color: "red",
         borderRadius: 200,
-        backgroundColor: "red",
+        backgroundColor: "green",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        height: 100,
+        width: 100
       },
       option: {
         padding: 10,

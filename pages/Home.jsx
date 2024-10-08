@@ -4,11 +4,7 @@ import {View, Text, StyleSheet, ScrollView, Button, Dimensions} from "react-nati
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
 import { useSQLiteContext } from 'expo-sqlite/next';
-import { constants } from "../utils/constans"
-import Header from "../components/Header"
-import { LinearGradient } from 'expo-linear-gradient';
 import Card from "../components/Card";
 import { getAllData } from "../services/blog";
 const Home = ({navigation})=>{

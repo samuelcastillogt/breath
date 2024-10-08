@@ -2,10 +2,10 @@ import React, {useState, useEffect} from "react";
 import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
 
 import ConceptCard from "../components/ConceptCard";
-const Aceptar = ()=>{
+const Aceptar = ({navigation})=>{
     return(
         <View style={styles.container}>
-             <ConceptCard />               
+             <ConceptCard navigation={navigation}/>               
         </View>
     )
 }

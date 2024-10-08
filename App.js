@@ -29,16 +29,10 @@ export default function App() {
     <SQLiteProvider databaseName="test.db">
     <Provider store={store}>
     <NavigationContainer>
-    {/* <Stack.Navigator>
-      <Stack.Screen name="Inicio" component={Home} options={{ headerShown: false }}/>
-      <Stack.Screen name="Respiracion" component={Respiracion} />
-      <Stack.Screen name="Diario" component={Diario} options={{headerTintColor: constants.verde, headerTransparent: "red"}}/>
-      <Stack.Screen name="Aceptar" component={Aceptar} options={{headerTintColor: constants.verde, headerTransparent: "red"}}/>
-    </Stack.Navigator> */}
     <Tab.Navigator  screenOptions={{
     tabBarStyle: { margin: 5, borderTopLeftRadius: 30 }
   }}>
-      <Tab.Screen name="Inico" component={Init} options={{ headerShown: false,
+      <Tab.Screen name="Inico" component={Init}  options={{ headerShown: false,
                                                                      tabBarIcon: ({ color, size }) => (
                                                                       <AntDesign name="book" size={30} color="black" />
                                                                     ),

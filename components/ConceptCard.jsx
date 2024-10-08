@@ -3,9 +3,10 @@ import {View, Text, StyleSheet, ScrollView, TouchableHighlight, Image} from "rea
 import Target from "./Target";
 import { constants } from "../utils/constans";
 import { getAllCards } from "../services/dataApp.service";
-const ConceptCard = ()=>{
+const ConceptCard = ({navigation})=>{
     const [cards, setCards]= useState([])
     const [card, setCard] = useState([])
+    const resetNav = ()=> setCard([])
     const getCards = async()=>{
         const response = await getAllCards()
         setCards(response)
@@ -13,6 +14,12 @@ const ConceptCard = ()=>{
     useEffect(()=>{
         getCards()
     },[])
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            resetNav()
+        });
+        return unsubscribe;
+     }, [navigation]);
     return(
         <View style={styles.container}>
 

@@ -8,7 +8,15 @@ import { constants } from '../utils/constans';
 import Sintomas from '../pages/Sintomas';
 import Web from '../pages/Web';
 import HtmlRender from '../pages/HtmlRender';
-const Init = ()=>{
+import { useEffect } from 'react';
+const Init = ({navigation})=>{
+    const resetNav = (to)=> navigation.navigate("Inicio")
+    useEffect(() => {
+      const unsubscribe = navigation.addListener('focus', () => {
+          resetNav()
+      });
+      return unsubscribe;
+   }, [navigation]);
     return(
         <Stack.Navigator
         initialRouteName='Inicio'
