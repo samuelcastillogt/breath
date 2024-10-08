@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, ScrollView, Image, TouchableHighlight, Dimensions, StatusBar } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
 import Breath from "../components/Breath";
 import { constants } from "../utils/constans";
 
-const Respiracion = ()=>{
+const Respiracion = ({navigation, route})=>{
     const [exercise, setExercise] = useState([])
     const [play, setPlay] = useState(false)
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            setExercise([])
+        });
+        return unsubscribe;
+     }, [navigation]);
+   
     return(
         <>
             {
@@ -86,7 +93,7 @@ const styles = StyleSheet.create({
     button: {
         padding: 20,
         color: "red",
-        borderRadius: 50,
+        borderRadius: 200,
         backgroundColor: "red",
         display: "flex",
         justifyContent: "center",

@@ -56,7 +56,7 @@ const Home = ({navigation})=>{
             <View style={styles.optionContainer}>
                 <TouchableHighlight onPress={()=> navigation.navigate("Sintomas", {categoria: "Mental", data:data.filter((i)=> i.categorie == "mental")} )} style={[styles.option, styles.principal]}><><MaterialCommunityIcons name="brain" size={50} color="black" /><Text>Mental</Text></></TouchableHighlight>
                 <View>
-                <TouchableHighlight style={[styles.option, styles.secundary]} onPress={()=> navigation.navigate("Sintomas", {categoria: "Fisicos", data:data.filter((i)=> i.categorie == "fisicos")} )}><><FontAwesome6 name="person" size={24} color="black" /><Text>Fisicos</Text></></TouchableHighlight>
+                <TouchableHighlight style={[styles.option, styles.secundary]} onPress={()=> navigation.navigate("Sintomas", {categoria: "Fisicos", data:data.filter((i)=> i.categorie == "Fisicos")} )}><><FontAwesome6 name="person" size={24} color="black" /><Text>Fisicos</Text></></TouchableHighlight>
                 <TouchableHighlight style={[styles.option, styles.secundary]} onPress={()=> navigation.navigate("Sintomas", {categoria: "Sensaciones", data:data.filter((i)=> i.categorie == "sensaciones")})}><><AntDesign name="exclamationcircle" size={24} color="black" /><Text>Sensaciones</Text></></TouchableHighlight>
                 </View>                
             </View>

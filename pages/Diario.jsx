@@ -13,7 +13,6 @@ const Diario = ()=>{
     async function getAllTasks() {
        try {
        const firstRow = await db.getAllAsync('SELECT * FROM sintomas')
-       console.log(firstRow)
        setTasks(firstRow)   
        } catch (error) {
            console.log(error)

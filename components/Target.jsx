@@ -11,6 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { constants } from '../utils/constans';
 import FinishedLesson from './FinishedLesson';
+import Counter from './Counter';
 
 const Target = (props) => {
     const {data, exit} = props
@@ -58,11 +59,11 @@ const Target = (props) => {
           </TouchableOpacity>
           }
           {
-            last == false &&         <TouchableOpacity disabled={last} style={[styles.button, styles.orange, {backgroundColor:"orange"}]} onPress={() => {
+            last == false ?        <TouchableOpacity disabled={last} style={[styles.button, styles.orange, {backgroundColor:"orange"}]} onPress={() => {
             exit([])
           }}>
             <MaterialCommunityIcons name="exit-run" size={24} color="white" />
-          </TouchableOpacity>
+          </TouchableOpacity> : <Counter />
           }
 
           {

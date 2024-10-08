@@ -20,8 +20,9 @@ const SintomaForm = (props)=>{
                            onChange={(e)=> setTitle(e.nativeEvent.text)}
                 />
                 <TextInput placeholder="Describe lo que sentiste" 
-                           style={styles.input} 
+                           style={[styles.input, {borderWidth: 1, height: 200}]} 
                            key={2}
+                           multiline
                            onChange={(e)=> setDesc(e.nativeEvent.text)}
                 />
                 <Button title="Registrar" style={styles.buuton} onPress={dave} disabled={title.length == 0 || desc.length ==0 }/>
@@ -38,10 +39,13 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         height: 500,
-        zIndex: 99999999
+        zIndex: 99999999,
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
     },
     title:{
-        fontSize: 15,
+        fontSize: 25,
         fontWeight: "bold"
     },
     input: {

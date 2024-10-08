@@ -10,11 +10,13 @@ import Web from '../pages/Web';
 import HtmlRender from '../pages/HtmlRender';
 const Init = ()=>{
     return(
-        <Stack.Navigator>
+        <Stack.Navigator
+        initialRouteName='Inicio'
+        >
         <Stack.Screen name="Inicio" component={Home} options={{ headerShown: false }}/>
         <Stack.Screen name="Sintomas" component={Sintomas} options={{headerTintColor: "green"}}/>
         <Stack.Screen name="Post" component={Web} options={{headerTintColor: constants.verde}}/>
-        <Stack.Screen name="Web" component={HtmlRender} options={{headerTintColor: constants.verde}}/>
+        <Stack.Screen name="Comprende" component={HtmlRender} options={{headerTintColor: constants.verde}}/>
         <Stack.Screen name="Diario" component={Diario} options={{headerTintColor: constants.verde}}/>
       </Stack.Navigator>
     )

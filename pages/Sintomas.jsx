@@ -9,7 +9,7 @@ const Sintomas = ({navigation, route})=>{
         <ScrollView >
             <View style={{alignItems: "center"}}>
            {
-            post == null && data.map(item => <TouchableHighlight style={styles.option} key={item.title} onPress={()=> navigation.navigate("Web", {content: item.content})}>
+            post == null && data.map(item => <TouchableHighlight style={styles.option} key={item.title} onPress={()=> navigation.navigate("Comprende", {content: item.content})}>
             <Text 
                 style={styles.optionTitle}
             > {item.title}
